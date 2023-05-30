@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.11.2 on win32)" generated="20230530 17:20:41.613" rpa="false" schemaversion="3">
+<suite id="s1" name="SMT 010 Approval" source="C:\Users\Admin\Documents\drivs-automate-tests\Sanity Test\SMT_010_Approval.robot">
+<kw name="Suite Setup UAT" library="Common" type="SETUP">
+<kw name="Open browser to Drivs site UAT" library="Common">
+<kw name="Get Variable Value" library="BuiltIn">
+<var>${HEADLESSMODE}</var>
+<arg>${HEADLESSMODE}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<msg timestamp="20230530 17:20:41.913" level="INFO">${HEADLESSMODE} = True</msg>
+<status status="PASS" starttime="20230530 17:20:41.913" endtime="20230530 17:20:41.913"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${opt}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230530 17:20:41.914" level="INFO">${opt} = &lt;selenium.webdriver.chrome.options.Options object at 0x00000293FEC1B550&gt;</msg>
+<status status="PASS" starttime="20230530 17:20:41.914" endtime="20230530 17:20:41.914"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${HEADLESSMODE}' == 'True'</arg>
+<arg>Call Method</arg>
+<arg>${opt}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Call Method" library="BuiltIn">
+<arg>${opt}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20230530 17:20:41.914" endtime="20230530 17:20:41.914"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:41.914" endtime="20230530 17:20:41.914"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url_drivs_uat}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230530 17:20:41.915" level="INFO">Opening browser 'Chrome' to base url 'https://uat1.true-e-logistics.com/4pl-web-platform/task-management/gantt'.</msg>
+<status status="PASS" starttime="20230530 17:20:41.914" endtime="20230530 17:20:44.052"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:41.913" endtime="20230530 17:20:44.052"/>
+</kw>
+<kw name="Set Maxize of browser" library="Common">
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230530 17:20:44.052" endtime="20230530 17:20:44.168"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:44.052" endtime="20230530 17:20:44.168"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:41.913" endtime="20230530 17:20:44.168"/>
+</kw>
+<test id="s1-t1" name="SMT_010_01 Add approver and Edit approver and Remove approver" line="14">
+<kw name="Test Setup UAT" library="Common" type="SETUP">
+<kw name="Go to Drivs site main page UAT" library="Common">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${url_drivs_uat}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20230530 17:20:44.171" level="INFO">Opening url 'https://uat1.true-e-logistics.com/4pl-web-platform/task-management/gantt'</msg>
+<status status="PASS" starttime="20230530 17:20:44.170" endtime="20230530 17:20:44.314"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:44.170" endtime="20230530 17:20:44.314"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:44.169" endtime="20230530 17:20:44.314"/>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>0.3</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20230530 17:20:44.315" endtime="20230530 17:20:44.315"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Login DRIVS web</arg>
+<arg>${team_management_team_shift_username}</arg>
+<arg>${team_management_team_shift_password}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Login DRIVS web" library="LoginKeyword">
+<arg>${team_management_team_shift_username}</arg>
+<arg>${team_management_team_shift_password}</arg>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230530 17:20:46.318" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230530 17:20:44.316" endtime="20230530 17:20:46.318"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>2s</arg>
+<arg>Input Text</arg>
+<arg>${txt_username}</arg>
+<arg>${varusername}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_username}</arg>
+<arg>${varusername}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230530 17:20:46.319" level="INFO">Typing text '010E6945' into text field 'id=username'.</msg>
+<status status="PASS" starttime="20230530 17:20:46.318" endtime="20230530 17:20:47.345"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:46.318" endtime="20230530 17:20:47.345"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>2s</arg>
+<arg>Input password</arg>
+<arg>${txt_passwords}</arg>
+<arg>${varpassword}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${txt_passwords}</arg>
+<arg>${varpassword}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230530 17:20:47.345" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg timestamp="20230530 17:20:47.980" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230530 17:20:48.368" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230530 17:20:47.345" endtime="20230530 17:20:48.368"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:47.345" endtime="20230530 17:20:48.368"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>2s</arg>
+<arg>Click Element</arg>
+<arg>${btn_Login}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_Login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:20:48.368" level="INFO">Clicking element 'xpath=//*[@id="root"]/div/div[1]/form/button'.</msg>
+<status status="PASS" starttime="20230530 17:20:48.368" endtime="20230530 17:20:49.021"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:48.368" endtime="20230530 17:20:49.021"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:44.316" endtime="20230530 17:20:49.021"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:44.316" endtime="20230530 17:20:49.021"/>
+</kw>
+<kw name="Verify Work forz Home page" library="TeamManagementKeyword">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_txt_TaskManagement}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:20:49.022" endtime="20230530 17:20:51.087"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>${team_management_txt_TaskManagement}</arg>
+<arg>Task management</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20230530 17:20:51.818" level="INFO">Element '//*[@id="root"]/div/div[2]/div[1]/div/h2/div/div' contains text 'Task management'.</msg>
+<status status="PASS" starttime="20230530 17:20:51.087" endtime="20230530 17:20:51.818"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:49.022" endtime="20230530 17:20:51.818"/>
+</kw>
+<kw name="Go to Tab Team Management" library="TeamManagementKeyword">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${team_management_tab_TeamManagement}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230530 17:20:51.819" endtime="20230530 17:20:52.445"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>5x</arg>
+<arg>2s</arg>
+<arg>Click Element</arg>
+<arg>${team_management_tab_TeamManagement}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_tab_TeamManagement}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:20:52.445" level="INFO">Clicking element '//body/div[@id='root']/div[1]/div[1]/div[1]/div[1]/div[3]/div[4]/div[1]/*[1]'.</msg>
+<status status="PASS" starttime="20230530 17:20:52.445" endtime="20230530 17:20:53.111"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:52.445" endtime="20230530 17:20:53.111"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:51.818" endtime="20230530 17:20:53.111"/>
+</kw>
+<kw name="Search Team Approval" library="TeamManagementKeyword">
+<arg>${team_management_team_shift_team_benz}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_path_list_team}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:20:53.112" endtime="20230530 17:20:55.107"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>4x</arg>
+<arg>3s</arg>
+<arg>Input Text</arg>
+<arg>${team_management_path_search_team_approver}</arg>
+<arg>${Team_benz}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${team_management_path_search_team_approver}</arg>
+<arg>${Team_benz}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230530 17:20:55.107" level="INFO">Typing text 'benzteamss' into text field '//input[@class='css-a4ckow']'.</msg>
+<status status="PASS" starttime="20230530 17:20:55.107" endtime="20230530 17:20:56.563"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:55.107" endtime="20230530 17:20:56.563"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_path_team_benzteam}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:20:56.563" endtime="20230530 17:20:58.002"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${team_management_path_team_benzteam}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20230530 17:20:58.002" endtime="20230530 17:20:58.873"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_path_team_benzteam}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:20:58.873" endtime="20230530 17:20:59.793"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>4x</arg>
+<arg>3s</arg>
+<arg>Click Element</arg>
+<arg>${team_management_path_team_benzteam}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_path_team_benzteam}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:20:59.793" level="INFO">Clicking element '//p[@class='css-1mbxbm3'][normalize-space()='benzteamss']'.</msg>
+<status status="PASS" starttime="20230530 17:20:59.793" endtime="20230530 17:21:00.506"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:59.793" endtime="20230530 17:21:00.506"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:53.111" endtime="20230530 17:21:00.506"/>
+</kw>
+<kw name="Add_approver" library="TeamManagementKeyword">
+<arg>${team_management_team_shift_team_technician_name}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_txt_approvelTeam}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:21:00.507" endtime="20230530 17:21:01.435"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_txt_approvelTeam}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:01.435" level="INFO">Clicking element '//div[normalize-space()='Approval Team']'.</msg>
+<status status="PASS" starttime="20230530 17:21:01.435" endtime="20230530 17:21:02.106"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_btn_add_approver}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:21:02.106" endtime="20230530 17:21:03.031"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_btn_add_approver}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:03.031" level="INFO">Clicking element '//button[normalize-space()='Add Approver']'.</msg>
+<status status="PASS" starttime="20230530 17:21:03.031" endtime="20230530 17:21:03.743"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${team_management_search_user_approver}</arg>
+<arg>${technician_name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:03.743" level="INFO">Typing text 'apibesttechnician' into text field '(//input[@placeholder='Search'])[3]'.</msg>
+<status status="PASS" starttime="20230530 17:21:03.743" endtime="20230530 17:21:05.076"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_btn_checkbox_approver}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:21:05.076" endtime="20230530 17:21:06.510"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_btn_checkbox_approver}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:06.510" level="INFO">Clicking element '//div[@class='css-w0fefz']'.</msg>
+<status status="PASS" starttime="20230530 17:21:06.510" endtime="20230530 17:21:07.169"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_btn_&gt;_approver}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:21:07.169" endtime="20230530 17:21:08.094"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_btn_&gt;_approver}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:08.094" level="INFO">Clicking element '//div[@class='css-1772sct']//*[name()='svg']'.</msg>
+<status status="PASS" starttime="20230530 17:21:08.094" endtime="20230530 17:21:08.756"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_btn_next_approver}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:08.756" level="INFO">Clicking element '//button[normalize-space()='Next']'.</msg>
+<status status="PASS" starttime="20230530 17:21:08.756" endtime="20230530 17:21:09.421"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_checkbox_request_assistance}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:21:09.421" endtime="20230530 17:21:10.346"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_checkbox_request_assistance}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:10.346" level="INFO">Clicking element '//tbody/tr[1]/td[2]/span[1]/label[1]/div[1]/*[1]'.</msg>
+<status status="PASS" starttime="20230530 17:21:10.346" endtime="20230530 17:21:11.004"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_checkbox_order_return}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:21:11.004" endtime="20230530 17:21:11.929"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_checkbox_order_return}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:11.929" level="INFO">Clicking element '//tbody/tr[1]/td[3]/span[1]/label[1]/div[1]/*[1]'.</msg>
+<status status="PASS" starttime="20230530 17:21:11.929" endtime="20230530 17:21:12.582"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_checkbox_leave_request}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:21:12.582" endtime="20230530 17:21:13.508"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_checkbox_leave_request}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:13.508" level="INFO">Clicking element '//tbody/tr[1]/td[4]/span[1]/label[1]/div[1]/*[1]'.</msg>
+<status status="PASS" starttime="20230530 17:21:13.508" endtime="20230530 17:21:14.170"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_btn_add_member_approver}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:21:14.170" endtime="20230530 17:21:15.097"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_btn_add_member_approver}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:15.097" level="INFO">Clicking element '//button[normalize-space()='Add']'.</msg>
+<status status="PASS" starttime="20230530 17:21:15.097" endtime="20230530 17:21:15.745"/>
+</kw>
+<status status="PASS" starttime="20230530 17:21:00.506" endtime="20230530 17:21:15.745"/>
+</kw>
+<kw name="Verify toast add approver success" library="TeamManagementKeyword">
+<arg>${expected_toast_add_approve_success}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${team_management_toast_approve}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230530 17:21:15.746" endtime="20230530 17:21:16.370"/>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<arg>${team_management_toast_approve}</arg>
+<arg>${msg_toast_add_approve_success}</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" starttime="20230530 17:21:16.370" endtime="20230530 17:21:16.990"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${toast_text}</var>
+<arg>${team_management_toast_approve}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:17.606" level="INFO">${toast_text} = Add approver success
+You've already added 1 approver to benzteamss' team</msg>
+<status status="PASS" starttime="20230530 17:21:16.990" endtime="20230530 17:21:17.606"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${toast_text}</arg>
+<arg>${msg_toast_add_approve_success}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230530 17:21:17.606" endtime="20230530 17:21:17.606"/>
+</kw>
+<kw name="Wait Until Element Does Not Contain" library="SeleniumLibrary">
+<arg>${team_management_toast_approve}</arg>
+<arg>${msg_toast_add_approve_success}</arg>
+<doc>Waits until the element ``locator`` does not contain ``text``.</doc>
+<status status="PASS" starttime="20230530 17:21:17.606" endtime="20230530 17:21:19.040"/>
+</kw>
+<status status="PASS" starttime="20230530 17:21:15.745" endtime="20230530 17:21:19.040"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>RESULT_SMT_010_01.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230530 17:21:19.457" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../RESULT_SMT_010_01.png"&gt;&lt;img src="../RESULT_SMT_010_01.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230530 17:21:19.040" endtime="20230530 17:21:19.457"/>
+</kw>
+<kw name="Edit_approve_request" library="TeamManagementKeyword">
+<arg>${expected_edit_approve}</arg>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_kebab_approval_team}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:21:19.458" endtime="20230530 17:21:20.384"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_kebab_approval_team}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:20.384" level="INFO">Clicking element '//tbody//td[@class='table-column actions']//*[name()='svg']'.</msg>
+<status status="PASS" starttime="20230530 17:21:20.384" endtime="20230530 17:21:21.033"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_btn_kebab_edit_approval_type}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:21:21.033" endtime="20230530 17:21:21.958"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_btn_kebab_edit_approval_type}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:21.958" level="INFO">Clicking element '//li[normalize-space()='Edit approval type']'.</msg>
+<status status="PASS" starttime="20230530 17:21:21.958" endtime="20230530 17:21:22.622"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${team_management_txt_edit_approval_type}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230530 17:21:22.622" endtime="20230530 17:21:23.241"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_checkbox_leave_request_edit}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:23.241" level="INFO">Clicking element '//div[1]//label[1]//div[1]'.</msg>
+<status status="PASS" starttime="20230530 17:21:23.241" endtime="20230530 17:21:23.892"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_checkbox_request_assistance_edit}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:23.892" level="INFO">Clicking element '//div[3]//label[1]//div[1]'.</msg>
+<status status="PASS" starttime="20230530 17:21:23.892" endtime="20230530 17:21:24.543"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_btn_edit_approval_type}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:24.543" level="INFO">Clicking element '//button[normalize-space()='Edit']'.</msg>
+<status status="PASS" starttime="20230530 17:21:24.543" endtime="20230530 17:21:25.184"/>
+</kw>
+<status status="PASS" starttime="20230530 17:21:19.457" endtime="20230530 17:21:25.184"/>
+</kw>
+<kw name="Verify toast edit approve" library="TeamManagementKeyword">
+<arg>${expected_edit_approve}</arg>
+<arg>${expected_toast_add_approve_success}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${team_management_toast_approve}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230530 17:21:25.185" endtime="20230530 17:21:25.801"/>
+</kw>
+<kw name="Wait Until Element Does Not Contain" library="SeleniumLibrary">
+<arg>${team_management_toast_approve}</arg>
+<arg>${msg_toast_add_approve_success}</arg>
+<doc>Waits until the element ``locator`` does not contain ``text``.</doc>
+<status status="PASS" starttime="20230530 17:21:25.801" endtime="20230530 17:21:26.418"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${team_management_toast_approve}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230530 17:21:26.418" endtime="20230530 17:21:27.032"/>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<arg>${team_management_toast_approve}</arg>
+<arg>${msg_toast_edit_approve}</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" starttime="20230530 17:21:27.032" endtime="20230530 17:21:27.648"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${toast_text}</var>
+<arg>${team_management_toast_approve}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:28.266" level="INFO">${toast_text} = Edit approval type success
+‘apibesttechnician apibesttechnician’ ’s approval type have been edited</msg>
+<status status="PASS" starttime="20230530 17:21:27.648" endtime="20230530 17:21:28.266"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${toast_text}</arg>
+<arg>${msg_toast_edit_approve}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230530 17:21:28.267" endtime="20230530 17:21:28.267"/>
+</kw>
+<kw name="Wait Until Element Does Not Contain" library="SeleniumLibrary">
+<arg>${team_management_toast_approve}</arg>
+<arg>${msg_toast_edit_approve}</arg>
+<doc>Waits until the element ``locator`` does not contain ``text``.</doc>
+<status status="PASS" starttime="20230530 17:21:28.267" endtime="20230530 17:21:28.890"/>
+</kw>
+<status status="PASS" starttime="20230530 17:21:25.185" endtime="20230530 17:21:28.890"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>RESULT_SMT_010_02.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230530 17:21:29.285" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../RESULT_SMT_010_02.png"&gt;&lt;img src="../RESULT_SMT_010_02.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230530 17:21:28.890" endtime="20230530 17:21:29.285"/>
+</kw>
+<kw name="Remove_approver" library="TeamManagementKeyword">
+<arg>${expected_toast_add_approve_success}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_kebab_approval_team}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:29.287" level="INFO">Clicking element '//tbody//td[@class='table-column actions']//*[name()='svg']'.</msg>
+<status status="PASS" starttime="20230530 17:21:29.286" endtime="20230530 17:21:29.920"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${team_management_btn_kebab_remove_approver}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230530 17:21:29.920" endtime="20230530 17:21:30.847"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_btn_kebab_remove_approver}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:30.847" level="INFO">Clicking element '//li[normalize-space()='Remove approver']'.</msg>
+<status status="PASS" starttime="20230530 17:21:30.847" endtime="20230530 17:21:31.511"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${team_management_txt_remove_approver}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230530 17:21:31.511" endtime="20230530 17:21:32.128"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${team_management_btn_remove_approver}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:32.128" level="INFO">Clicking element '//button[normalize-space()='Remove']'.</msg>
+<status status="PASS" starttime="20230530 17:21:32.128" endtime="20230530 17:21:32.791"/>
+</kw>
+<status status="PASS" starttime="20230530 17:21:29.286" endtime="20230530 17:21:32.791"/>
+</kw>
+<kw name="Verify toast remove approve" library="TeamManagementKeyword">
+<arg>${expected_toast_remove_approve}</arg>
+<arg>${expected_toast_add_approve_success}</arg>
+<arg>${expected_edit_approve}</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${team_management_toast_approve}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230530 17:21:32.792" endtime="20230530 17:21:33.409"/>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<arg>${team_management_toast_approve}</arg>
+<arg>${msg_toast_remove_approve}</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" starttime="20230530 17:21:33.409" endtime="20230530 17:21:34.026"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${toast_text}</var>
+<arg>${team_management_toast_approve}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230530 17:21:34.641" level="INFO">${toast_text} = Remove approver success
+'apibesttechnician apibesttechnician' have been removed from benzteamss team</msg>
+<status status="PASS" starttime="20230530 17:21:34.026" endtime="20230530 17:21:34.641"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${msg_toast_remove_approve}</arg>
+<arg>${toast_text}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230530 17:21:34.641" endtime="20230530 17:21:34.641"/>
+</kw>
+<kw name="Wait Until Element Does Not Contain" library="SeleniumLibrary">
+<arg>${team_management_toast_approve}</arg>
+<arg>${msg_toast_remove_approve}</arg>
+<doc>Waits until the element ``locator`` does not contain ``text``.</doc>
+<status status="PASS" starttime="20230530 17:21:34.642" endtime="20230530 17:21:36.887"/>
+</kw>
+<status status="PASS" starttime="20230530 17:21:32.791" endtime="20230530 17:21:36.887"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>RESULT_SMT_010_03.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230530 17:21:37.307" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../RESULT_SMT_010_03.png"&gt;&lt;img src="../RESULT_SMT_010_03.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230530 17:21:36.887" endtime="20230530 17:21:37.308"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230530 17:21:40.308" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230530 17:21:37.308" endtime="20230530 17:21:40.308"/>
+</kw>
+<kw name="Test Teardown" library="Common" type="TEARDOWN">
+<kw name="Capture screen if test fail" library="Common">
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" starttime="20230530 17:21:40.309" endtime="20230530 17:21:40.309"/>
+</kw>
+<status status="PASS" starttime="20230530 17:21:40.309" endtime="20230530 17:21:40.309"/>
+</kw>
+<status status="PASS" starttime="20230530 17:21:40.309" endtime="20230530 17:21:40.310"/>
+</kw>
+<tag>SMT</tag>
+<tag>SMT_010</tag>
+<tag>SMT_010_01</tag>
+<status status="PASS" starttime="20230530 17:20:44.168" endtime="20230530 17:21:40.310"/>
+</test>
+<kw name="Suite Teardown" library="Common" type="TEARDOWN">
+<kw name="Close All browser" library="Common">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20230530 17:21:40.312" endtime="20230530 17:21:42.651"/>
+</kw>
+<status status="PASS" starttime="20230530 17:21:40.312" endtime="20230530 17:21:42.651"/>
+</kw>
+<status status="PASS" starttime="20230530 17:21:40.311" endtime="20230530 17:21:42.651"/>
+</kw>
+<status status="PASS" starttime="20230530 17:20:41.615" endtime="20230530 17:21:42.651"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">SMT</stat>
+<stat pass="1" fail="0" skip="0">SMT_010</stat>
+<stat pass="1" fail="0" skip="0">SMT_010_01</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="SMT 010 Approval">SMT 010 Approval</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
